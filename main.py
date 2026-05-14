@@ -170,7 +170,7 @@ async def analyse(file: UploadFile = File(...)):
 
     try:
         # librosa.load handles MP3, WAV, FLAC, OGG, M4A etc. via soundfile/audioread
-        y, sr = librosa.load(io.BytesIO(audio_bytes), sr=None, mono=True)
+        y, sr = librosa.load(io.BytesIO(audio_bytes), sr=22050, mono=True)
     except Exception as e:
         raise HTTPException(status_code=422, detail=f"Could not decode audio: {e}")
 
